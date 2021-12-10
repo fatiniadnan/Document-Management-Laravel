@@ -1,1 +1,2 @@
-# Document-Management-Laravel
+# Document Management System (Laravel)
+### Made by Novak Daniel
