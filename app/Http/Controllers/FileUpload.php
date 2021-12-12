@@ -31,6 +31,7 @@ class FileUpload extends Controller
             $fileModel->name = time().'_'.$req->file->getClientOriginalName();
             $fileModel->file_path = '/storage/app/' . $filePath;
             $fileModel->size = $size;
+            $fileModel->owner = Auth::user()->id;
             $fileModel->save();
 
             return back()

@@ -17,9 +17,8 @@ class IndexController extends Controller
     public function index(File $files)
     {
        
-        $files = File::where('file_path', '=', '/storage/app/' . Auth::user()->id . '/1639329134_Screenshot from 2021-05-12 17-30-23.png')->get();
+        $files = File::where('owner', '=', Auth::user()->id ?? '')->get();
       
-       
 
         return view("index", compact('files'));
     }
