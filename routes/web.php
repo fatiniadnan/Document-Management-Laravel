@@ -19,7 +19,9 @@ use App\Http\Controllers\TextController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
+
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('order-by-update', [IndexController::class, 'order'])->name('index-order');
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('update-pass', [ProfileController::class, 'update'])->name('update-pass');
     Route::get('upload.file-upload', [FileUpload::class, 'createForm'])->name('upload-file');

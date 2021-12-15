@@ -104,7 +104,7 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         
             
-            <footer class="bg-dark text-center text-white" style="position: absolute; bottom:0; width:100%;">
+            <footer class="bg-dark text-center text-white" style="position:fixed; bottom:0; width:100%; margin-top:40px;">
              
               <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2021 Copyright:

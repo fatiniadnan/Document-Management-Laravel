@@ -24,8 +24,36 @@
                                 <h1 class="text-center">Hi from index</h1>
    
                                 <p class="text-center">Üdvözöljük {{auth()->user()->name}}!</p>
+                               
                                 
-                             
+                                <div class="col-md-4" style="margin-bottom:10px;">
+                                  <form action="{{ route('index') }}" method="GET">
+                                  <div class="input-group">
+                                    <input type="search" name="search" class="form-control">
+                                    <span class="input-group-btn">
+                                      <button type="submit" class="btn btn-primary">Search</button>
+                                    </span>
+                                    <span class="input-group-btn" style="margin-left: 5px;">
+                                      <button type="submit" href=" {{ route('index') }}" class="btn btn-primary">Restore search</button>
+                                    </span>
+                                  </div>
+                                  </form>
+                                </div>
+
+                                <div class="col-md-4" style="margin-bottom:10px;">
+                              
+                                  
+                                    <a>Order by: </a>
+                                  
+                                      <a href="{{ route('index') }}">File name</a>
+                                  
+                                   
+                                      <a href="{{ route('index-order') }}">Update Date</a>
+                                    
+                                  </div>
+                                  
+                                
+                                
 
                                 <table class="table" style="text-align: center; color:white; background-color: #212529;">
       
@@ -67,14 +95,18 @@
                                         </td>
                                       </tr>
                                         @endforeach
-                                        
+                                       
                                     </tbody>
                                   </table>
-
+                                  <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="{{ $files->previousPageUrl() }}">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="{{ $files->nextPageUrl() }}">Next</a></li>
+                        
+                                </ul>
 
                                 
                               
-
+                              </div>
 
                                 @else
                                 <h1 class="text-center">Kérjük jelentkezzen be!</h1>

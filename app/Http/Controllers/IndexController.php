@@ -14,13 +14,17 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(File $files)
+    public function index(File $files, Request $request)
     {
        
-        $files = File::where('owner', '=', Auth::user()->id ?? '')->get();
-     
+  
 
-        return view("index", compact('files'));
+        $search = $request->get('search');
+        $files = File::where('owner', '=', Auth::user()->id ?? '')->orderBy('name')
+        ->where('name', 'like', '%'.$search.'%')->paginate(20);
+        return view('index', ['files' => $files]);
+
+       
     }
 
     /**
@@ -28,9 +32,12 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function order(File $files, Request $request)
     {
-        //
+        $search = $request->get('search');
+        $files = File::where('owner', '=', Auth::user()->id ?? '')->orderBy('updated_at')
+        ->where('name', 'like', '%'.$search.'%')->paginate(20);
+        return view('index', ['files' => $files]);
     }
 
     /**
