@@ -71,7 +71,13 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+        $files = File::where('id', '=', $id ?? '')->get();
+ 
+        $nameext = File::where('id', '=', $id)->value('name');
+        $name = rtrim($nameext, ".txt");
+        $text = Storage::disk('public')->get('./'.Auth::user()->id.'/'.$nameext);
+
+        return view('upload.edit',compact('files', 'name', 'text'));
     }
 
     /**
@@ -83,7 +89,28 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nameext = File::where('id', '=', $id)->value('name');
+        $namewithout = rtrim($nameext, ".txt");
+        if($request->name == $namewithout) {
+            Storage::disk('public')->put('./'.Auth::user()->id.'/'.$request->name.'.txt', $request->text);
+            $size = Storage::disk('public')->size('./'.Auth::user()->id.'/'.$request->name.'.txt');
+            $data= File::findOrFail($id);
+            $data->size = $size;
+            $data->save();
+        } else {
+
+            Storage::disk('public')->move('./'.Auth::user()->id.'/'.$nameext, './'.Auth::user()->id.'/'.$request->name.'.txt');
+            Storage::disk('public')->put('./'.Auth::user()->id.'/'.$request->name.'.txt', $request->text);
+            $size = Storage::disk('public')->size('./'.Auth::user()->id.'/'.$request->name.'.txt');
+            $data= File::findOrFail($id);
+            $data->name = $request->name.'.txt';
+            $data->file_path = 'storage/'.Auth::user()->id.'/'.$request->name.'.txt';
+            $data->size = $size;
+            $data->save();
+
+        }   
+
+        return redirect()->action([IndexController::class, 'index'])->with('success','File has been updated.');
     }
 
     /**

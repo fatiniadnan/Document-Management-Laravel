@@ -61,7 +61,7 @@
                                         </td>
                                         <td>
                                           @if (strpos($file->name, '.txt'))
-                                          <a class="btn btn-sm btn-primary" href="" role="button">Edit</a>
+                                          <a class="btn btn-sm btn-primary" href=" upload.edit/{{$file->id}}" role="button">Edit</a>
                                           @endif  
                                         </td>
                                       </tr>

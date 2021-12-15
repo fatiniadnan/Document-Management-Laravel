@@ -35,7 +35,7 @@ class FileUpload extends Controller
             $fileModel->owner = Auth::user()->id;
             $fileModel->save();
 
-            return back()
+            return redirect()->action([IndexController::class, 'index'])
             ->with('success','File has been uploaded.')
             ->with('file', $fileName);
         }

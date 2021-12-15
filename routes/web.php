@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('upload.file-upload', [FileUpload::class, 'fileUpload'])->name('fileUpload');
     Route::post('delete/{id}', [FileUpload::class, 'delete'])->name('delete');
     Route::get('upload.show/{id}', [IndexController::class, 'show'])->name('upload.show/{id}');
+    Route::get('upload.edit/{id}', [IndexController::class, 'edit'])->name('upload.edit/{id}');
+    Route::post('update/{id}', [IndexController::class, 'update'])->name('update');
     Route::get('text.new', [TextController::class, 'index'])->name('text.new');
     Route::post('text.new', [TextController::class, 'store'])->name('uploadText');
     

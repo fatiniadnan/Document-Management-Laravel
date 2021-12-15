@@ -11,7 +11,7 @@
     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="name" value="{{ auth()->user()->name }}">
     @error('name')
         <span class="invalid-feedback" role="alert">
-            <p>nemjo</p>
+          {{ $error }}
         </span>
     @enderror
   </div>
