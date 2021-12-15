@@ -7,20 +7,18 @@ use App\Models\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class IndexController extends Controller
+class TextController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(File $files)
+    public function index()
     {
-       
-        $files = File::where('owner', '=', Auth::user()->id ?? '')->get();
      
 
-        return view("index", compact('files'));
+        return view("text.new");
     }
 
     /**
@@ -41,7 +39,24 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Storage::disk('local')->exists('./public/'.Auth::user()->id.'/'.$request->name.'.txt')) {
+            return back()
+            ->with('error','Sorry, this file name exist! Please choose another one.');
+            
+        }
+        Storage::disk('local')->put('./public/'.Auth::user()->id.'/'.$request->name.'.txt', $request->text);
+
+        $fileModel = new File;
+        $size = Storage::size('./public/'.Auth::user()->id.'/'.$request->name.'.txt');
+        $fileModel->name = $request->name.'.txt';
+        $fileModel->file_path = 'storage/'.Auth::user()->id.'/'.$request->name.'.txt';
+        $fileModel->size = $size;
+        $fileModel->owner = Auth::user()->id;
+        $fileModel->save();
+
+
+
+        return redirect()->action([IndexController::class, 'index'])->with('success','File has been uploaded.');
     }
 
     /**
@@ -52,14 +67,6 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-
-     
-
-        $files = File::where('id', '=', $id ?? '')->get();
- 
-       
-
-        return view('upload.show',compact('files'));
         
     }
 

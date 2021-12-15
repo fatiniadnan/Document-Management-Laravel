@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
        <script src="{{ asset('js/app.js') }}" defer></script>
-      
+       <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     </head>
     <body class="antialiased content">
 
@@ -37,7 +37,7 @@
                     <a class="nav-link" aria-current="page" href="{{ route('upload-file') }}">Upload File</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">New Text File</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('text.new') }}">New Text File</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Send File</a>

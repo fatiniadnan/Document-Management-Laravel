@@ -38,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-        Storage::makeDirectory($user->id);
+        Storage::makeDirectory('./public/'.$user->id);
         return $user;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\File;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FileUpload extends Controller
 {
@@ -26,10 +27,10 @@ class FileUpload extends Controller
 
          
             $fileName = time().'_'.$req->file->getClientOriginalName();
-            $filePath = $req->file('file')->storeAs(Auth::user()->id, $fileName);
+            $req->file('file')->storeAs('./public/'. Auth::user()->id, $fileName);
             $size = $req->file('file')->getSize();
             $fileModel->name = time().'_'.$req->file->getClientOriginalName();
-            $fileModel->file_path = '/storage/app/' . $filePath;
+            $fileModel->file_path = 'storage/'.Auth::user()->id.'/'.$fileName;
             $fileModel->size = $size;
             $fileModel->owner = Auth::user()->id;
             $fileModel->save();
@@ -41,5 +42,16 @@ class FileUpload extends Controller
     
    }
 }
+        public function delete($id){
+
+          $name = File::where('id', '=', $id)->value('name');
+         Storage::disk('public')->delete('./'.Auth::user()->id.'/'.$name);
+
+         $destroy = File::find($id);
+
+         $destroy->delete();
+     
+         return redirect()->action([IndexController::class, 'index'])->with('success','File has been deleted.');
+        }
 
 }
