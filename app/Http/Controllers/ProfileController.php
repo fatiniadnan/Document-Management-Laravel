@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -66,9 +69,19 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $user = User::where('id', '=', Auth::user()->id)->get();
+        $this->validate($request, [
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:6'
+            ]);
+            $pass= User::findOrFail(Auth::user()->id);
+            $pass->forceFill([
+                'password' => Hash::make($request['password']),
+            ])->save();
+            return redirect()->action([IndexController::class, 'index'])->with('success','Your profile password has been updated.');
     }
 
     /**

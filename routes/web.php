@@ -21,6 +21,7 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('update-pass', [ProfileController::class, 'update'])->name('update-pass');
     Route::get('upload.file-upload', [FileUpload::class, 'createForm'])->name('upload-file');
     Route::post('upload.file-upload', [FileUpload::class, 'fileUpload'])->name('fileUpload');
     Route::post('delete/{id}', [FileUpload::class, 'delete'])->name('delete');
