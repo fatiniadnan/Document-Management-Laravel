@@ -49,6 +49,7 @@
                                         
                                         <td>
                                         <a class="btn btn-sm btn-primary" href=" upload.show/{{$file->id}}" role="button">Show</a>
+                                        <a class="btn btn-sm btn-primary" href="{{route('download', $file->id)}}" role="button">Download</a>
                                        
                                       
                                        
