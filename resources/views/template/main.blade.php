@@ -60,7 +60,7 @@
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                           <a class="dropdown-item" href="{{ route('profile') }}">Profil</a>
                                           <div class="dropdown-divider"></div>
-                                          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Kijelentkezés</a>
+                                          <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
                                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -72,10 +72,10 @@
                                 @else
                                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                   <li class="nav-item">
-                                    <a href="{{ route('login') }}" style="margin-right: 10px;">Bejelentkezés</a>
+                                    <a href="{{ route('login') }}" style="margin-right: 10px;">Login</a>
     
                                     @if (Route::has('register'))
-                                        <a href="{{ route('register') }}">Regisztráció</a>
+                                        <a href="{{ route('register') }}">Register</a>
                                     @endif
                                   </li>
                                 </ul>

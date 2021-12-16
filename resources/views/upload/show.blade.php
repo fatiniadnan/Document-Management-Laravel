@@ -23,7 +23,7 @@
 
 <iframe 
     width="560"
-    height="315"
+    height="560"
     src="{{ URL::asset($file->file_path) }}" style="margin:auto"></iframe>
 
         @endif  

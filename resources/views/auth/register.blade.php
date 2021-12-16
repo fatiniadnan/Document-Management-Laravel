@@ -417,13 +417,13 @@ Credits
   <div class='box-form'>
     <div class='box-login-tab'></div>
     <div class='box-login-title'>
-      <div class='i i-login'></div><h2>Új fiók</h2>
+      <div class='i i-login'></div><h2>Register</h2>
     </div>
     <div class='box-login'>
       <div class='fieldset-body' id='login_form'>
         
         	<p class='field'>
-          <label for='user'>Teljes neve</label>
+          <label for='user'>Full name</label>
           <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="name" value="{{ old('name') }}">
     @error('name')
         <span class="invalid-feedback" role="alert">
@@ -431,7 +431,7 @@ Credits
         </span>
     @enderror
       	  <p class='field'>
-          <label for='pass'>Email címe</label>
+          <label for='pass'>Email</label>
           <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="email" value="{{ old('email') }}">
           @error('email')
               <span class="invalid-feedback" role="alert">
@@ -441,7 +441,7 @@ Credits
         </p>
 
         <p class='field'>
-          <label for='pass'>Jelszó</label>
+          <label for='pass'>Password</label>
           <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="password">
     @error('password')
         <span class="invalid-feedback" role="alert">
@@ -451,12 +451,12 @@ Credits
         </p>
 
         <p class='field'>
-          <label for='pass'>Jelszó mégegyszer</label>
+          <label for='pass'>Password again</label>
           <input name="password_confirmation" type="password" class="form-control" id="password_confirmation">
         </p>
 
        
-        	<input type='submit' id='do_login' value='REGISZTRÁCIÓ' title='REGISZTRÁCIÓ' />
+        	<input type='submit' id='do_login' value='Register' title='Register' />
          
       </div>
     </div>

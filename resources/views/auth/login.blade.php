@@ -415,7 +415,7 @@ Credits
   <div class='box-form'>
     <div class='box-login-tab'></div>
     <div class='box-login-title'>
-      <div class='i i-login'></div><h2>Belépés</h2>
+      <div class='i i-login'></div><h2>Login</h2>
     </div>
     <div class='box-login'>
       <div class='fieldset-body' id='login_form'>
@@ -441,7 +441,7 @@ Credits
 
        
 
-        	<input type='submit' id='do_login' value='BEJELENTKEZÉS' title='BEJELENTKEZÉS' />
+        	<input type='submit' id='do_login' value='Login' title='Login' />
          
       </div>
     </div>

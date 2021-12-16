@@ -23,7 +23,7 @@
                                 
                                 <h1 class="text-center">Hi from index</h1>
    
-                                <p class="text-center">Üdvözöljük {{auth()->user()->name}}!</p>
+                                <p class="text-center">Welcome, {{auth()->user()->name}}!</p>
                                
                                 
                                 <div class="col-md-4" style="margin-bottom:10px;">
@@ -111,8 +111,8 @@
                               </div>
 
                                 @else
-                                <h1 class="text-center">Kérjük jelentkezzen be!</h1>
-                                <p class="text-center">Amennyiben még nem regisztált, kérjük tegye meg.</p>
+                                <h1 class = "text-center"> Please log in! </h1>
+                                <p class = "text-center"> If you haven't registered yet, please do. </p>
                                 @endauth
 
 
