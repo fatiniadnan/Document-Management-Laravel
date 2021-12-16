@@ -36,5 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('text.new', [TextController::class, 'store'])->name('uploadText');
     Route::get('send.send', [SendController::class, 'index'])->name('send.send');
     Route::get('sendFiles', [SendController::class, 'send'])->name('sendFiles');
-    
+    Route::get('send-mail', function () {
+        $details = [
+        'title' => 'Mail from Example Site',
+        'body' => 'This is for testing email using smtp'
+        ];
+        Mail::to('test@test.com')->send(new \App\Mail\FilesentMail($details));
+        dd("Email is Sent.");
+        });
 });
