@@ -61,6 +61,7 @@
                                       <tr>
                                         <th scope="col">File</th>
                                         <th scope="col">Size</th>
+                                        <th scope="col">From</th>
                                         <th scope="col">Create Date</th>
                                         <th scope="col">Update Date</th>
                                         <th scope="col">Operations</th>
@@ -72,6 +73,7 @@
                                         <tr>
                                          <td>{{ $file->name }}</td>
                                         <td>{{ $file->size }} Bytes</td>
+                                        <td>{{ $file->sendername}}</td>
                                         <td>{{ $file->created_at }}</td>
                                         <td>{{ $file->updated_at }}</td>
                                         
@@ -98,6 +100,7 @@
                                        
                                     </tbody>
                                   </table>
+                                  
                                   <ul class="pagination">
                                     <li class="page-item"><a class="page-link" href="{{ $files->previousPageUrl() }}">Previous</a></li>
                                     <li class="page-item"><a class="page-link" href="{{ $files->nextPageUrl() }}">Next</a></li>
@@ -105,7 +108,6 @@
                                 </ul>
 
                                 
-                              
                               </div>
 
                                 @else

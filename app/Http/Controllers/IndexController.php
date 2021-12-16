@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,10 +16,9 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(File $files, Request $request)
-    {
-       
-  
 
+    {
+        
         $search = $request->get('search');
         $files = File::where('owner', '=', Auth::user()->id ?? '')->orderBy('name')
         ->where('name', 'like', '%'.$search.'%')->paginate(20);

@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FileUpload;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TextController;
+use App\Http\Controllers\SendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('update/{id}', [IndexController::class, 'update'])->name('update');
     Route::get('text.new', [TextController::class, 'index'])->name('text.new');
     Route::post('text.new', [TextController::class, 'store'])->name('uploadText');
+    Route::get('send.send', [SendController::class, 'index'])->name('send.send');
+    Route::get('sendFiles', [SendController::class, 'send'])->name('sendFiles');
     
 });
-
-Route::get('storage//{foldername}//{filename}', [FileController::class, 'getFile'])->where('filename', '^[^/]+$');

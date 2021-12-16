@@ -40,7 +40,7 @@
                     <a class="nav-link" aria-current="page" href="{{ route('text.new') }}">New Text File</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Send File</a>
+                    <a class="nav-link" href="{{ route('send.send') }}">Send File</a>
                   </li>
                   
                     

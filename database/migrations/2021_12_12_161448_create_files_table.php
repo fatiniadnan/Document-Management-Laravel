@@ -18,7 +18,9 @@ class CreateFilesTable extends Migration
             $table->string('name')->nullable();
             $table->string('file_path')->nullable();
             $table->string('size')->nullable();
+            $table->string('sendername')->nullable();
             $table->integer('owner')->nullable();
+            $table->integer('sender')->nullable();
             $table->timestamps();
         });
     }
