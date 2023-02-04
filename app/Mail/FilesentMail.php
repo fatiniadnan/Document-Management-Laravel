@@ -3,11 +3,14 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Queue\ShouldQueue;
+
 class FilesentMail extends Mailable
 {
 use Queueable, SerializesModels;
-public $details;
+
+protected $details;
 /**
 * Create a new message instance.
 *
@@ -15,7 +18,7 @@ public $details;
 */
 public function __construct($details)
 {
-$this->details = $details;
+    $this->details = $details;
 }
 /**
 * Build the message.
@@ -24,7 +27,11 @@ $this->details = $details;
 */
 public function build()
 {
-return $this->subject('Mail from test.com')
-->view('emails.FilesentMail');
+
+        return $this->subject('Mail from' . ' ' . Auth::user()->name)
+            ->view('emails.FilesentMail');                 
+        
 }
+
+
 }

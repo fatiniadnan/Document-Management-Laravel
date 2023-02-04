@@ -20,8 +20,8 @@ class IndexController extends Controller
     {
         
         $search = $request->get('search');
-        $files = File::where('owner', '=', Auth::user()->id ?? '')->orderBy('name')
-        ->where('name', 'like', '%'.$search.'%')->paginate(20);
+        $files = File::orderBy('name')
+        ->where('name', 'like', '%'.$search.'%')->paginate(10);
         return view('index', ['files' => $files]);
 
        
@@ -35,8 +35,8 @@ class IndexController extends Controller
     public function order(File $files, Request $request)
     {
         $search = $request->get('search');
-        $files = File::where('owner', '=', Auth::user()->id ?? '')->orderBy('updated_at')
-        ->where('name', 'like', '%'.$search.'%')->paginate(20);
+        $files = File::orderBy('updated_at')
+        ->where('name', 'like', '%'.$search.'%')->paginate(10);
         return view('index', ['files' => $files]);
     }
 
@@ -82,7 +82,7 @@ class IndexController extends Controller
  
         $nameext = File::where('id', '=', $id)->value('name');
         $name = rtrim($nameext, ".txt");
-        $text = Storage::disk('public')->get('./'.Auth::user()->id.'/'.$nameext);
+        $text = Storage::disk('public')->get('./public/'.'/'.$nameext);
 
         return view('upload.edit',compact('files', 'name', 'text'));
     }
@@ -99,19 +99,19 @@ class IndexController extends Controller
         $nameext = File::where('id', '=', $id)->value('name');
         $namewithout = rtrim($nameext, ".txt");
         if($request->name == $namewithout) {
-            Storage::disk('public')->put('./'.Auth::user()->id.'/'.$request->name.'.txt', $request->text);
-            $size = Storage::disk('public')->size('./'.Auth::user()->id.'/'.$request->name.'.txt');
+            Storage::disk('public')->put('./public/'.'/'.$request->name.'.txt', $request->text);
+            $size = Storage::disk('public')->size('./public/'.'/'.$request->name.'.txt');
             $data= File::findOrFail($id);
             $data->size = $size;
             $data->save();
         } else {
 
-            Storage::disk('public')->move('./'.Auth::user()->id.'/'.$nameext, './'.Auth::user()->id.'/'.$request->name.'.txt');
-            Storage::disk('public')->put('./'.Auth::user()->id.'/'.$request->name.'.txt', $request->text);
-            $size = Storage::disk('public')->size('./'.Auth::user()->id.'/'.$request->name.'.txt');
+            Storage::disk('public')->move('./public/'.'/'.$nameext, '/'.$request->name.'.txt');
+            Storage::disk('public')->put('./public/'.'/'.$request->name.'.txt', $request->text);
+            $size = Storage::disk('public')->size('./public/'.'/'.$request->name.'.txt');
             $data= File::findOrFail($id);
             $data->name = $request->name.'.txt';
-            $data->file_path = 'storage/'.Auth::user()->id.'/'.$request->name.'.txt';
+            $data->file_path = 'storage/'.'/'.$request->name.'.txt';
             $data->size = $size;
             $data->save();
 
@@ -129,6 +129,6 @@ class IndexController extends Controller
     public function download($id)
     {
         $file = File::where('id', '=', $id)->value('name');
-        return Storage::download('./public/'.Auth::user()->id.'/'.$file);
+        return Storage::download('./public/'.'/'.$file);
     }
 }

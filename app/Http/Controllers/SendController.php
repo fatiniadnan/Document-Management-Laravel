@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Facade;
 use App\Models\User;
 use App\Models\File;
+use App\Mail\FilesentMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class SendController extends Controller
@@ -18,14 +21,15 @@ class SendController extends Controller
     }
     public function send(Request $request)
     {
+
         foreach($request->select as $filename) {
             
-            if (Storage::disk('local')->exists('./public/'.$request->address.'/'.$filename)) {
-                return back()
-                ->with('error','Sorry, you have already sent '.$filename.' file to your address!');
+            // if (Storage::disk('public')->exists('./public/'.$request->address.'/'.$filename)) {
+            //     return back()
+            //     ->with('error','Sorry, you have already sent '.$filename.' file to your address!');
                 
-            }
-            Storage::disk('local')->copy('./public/'.Auth::user()->id.'/'.$filename, './public/'.$request->address.'/'.$filename);
+            // }
+            // Storage::disk('public')->copy('./public/'.'/'.$filename, './public/'.$request->address.'/'.$filename);
     
             $fileModel = new File;
 
@@ -36,14 +40,11 @@ class SendController extends Controller
             $fileModel->owner = $request->address;
             $fileModel->sender = Auth::user()->id;
             $fileModel->sendername = Auth::user()->name;
-            $fileModel->save();
+            //$fileModel->save();
 
             return redirect()->action([IndexController::class, 'index'])->with('success','File has been sent.');
 
         }
-  
-        
 
-       
     }
 }

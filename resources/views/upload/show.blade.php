@@ -3,6 +3,8 @@
 @section('content')
 @foreach ($files as $file)
 
+<div class="m-4" style="color: black;">
+
 @if ($file->owner == Auth::user()->id ?? '')
     {{ $file->name }}<br>
     {{ $file->file_path }}<br>
@@ -36,5 +38,8 @@
 
 
 @endforeach
+
+</div>
+
     
 @endsection

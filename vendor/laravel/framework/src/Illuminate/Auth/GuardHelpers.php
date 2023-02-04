@@ -65,10 +65,10 @@ trait GuardHelpers
      *
      * @return bool
      */
-    public function guest()
-    {
-        return ! $this->check();
-    }
+    // public function guest()
+    // {
+    //     return ! $this->check();
+    // }
 
     /**
      * Get the ID for the currently authenticated user.

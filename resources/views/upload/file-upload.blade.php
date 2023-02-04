@@ -5,7 +5,7 @@
 
 <div class="container mt-5">
     <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data" >
-      <h3 class="text-center mb-5">Upload File to your storage</h3>
+      <h3 class="text-center mb-5" style="color: black;">Upload New File</h3>
         @csrf
         @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -24,11 +24,11 @@
       @endif
 <div style="text-align: center; padding:30px;">
         <div class="custom-file" >
-            <input type="file" name="file" class="custom-file-input" id="chooseFile" multiple>
-            <label class="custom-file-label" for="chooseFile">Select file</label>
+            <input type="file" name="file" class="custom-file-input" id="chooseFile" multiple style="color: black;">
+            <label class="custom-file-label" for="chooseFile" style="color: black;">Select file</label>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
+        <button type="submit" name="submit" class="btn  btn-lg btn-primary btn-block mt-5">
             Upload Files
         </button>
     </form>

@@ -22,8 +22,8 @@ html {
 
 body {
   background: #23074d;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #cc5333, #23074d);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #cc5333, #23074d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to top, #ffff, #ffff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ffff, #ffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
      }
 
 /*--------------------
@@ -251,9 +251,9 @@ button:focus { outline:0; }
 }
 
 .b-support {
-  border: #87314e 1px solid;
+  border: #006400 1px solid;
   background-color: transparent;
-  color: #87314e;
+  color: #006400;
   margin: 6px 0;
 }
 
@@ -265,8 +265,8 @@ button:focus { outline:0; }
 
 .b-support:hover, .b-cta:hover {
   color: #fff;
-	background-color: #87314e;
-	border: #87314e 1px solid;
+	background-color: #006400;
+	border: #006400 1px solid;
 }
 
 .fieldset-body {
@@ -332,8 +332,8 @@ input[type=submit]  {
 	color: #fff;
   line-height: 40px;
   text-align: center;
-  background-color: #87314e;
-	border: 1px #87314e solid;
+  background-color: #006400;
+	border: 1px #006400 solid;
 	opacity: 1;
 	cursor: pointer;
 }
@@ -398,11 +398,11 @@ Credits
 }
 .vissza {
   position: absolute;
-  right: 0;
-  font-size: xx-large;
-  margin: 10px;
+  right: 10;
+  font-size: x-large;
+  margin: 50px;
   font-weight: 600;
-  color:white;
+  color:black;
   cursor: pointer;
 }
   </style>
@@ -410,14 +410,23 @@ Credits
 </head>
 
 
-<div class="vissza"><a href="/" style="text-decoration: none; color:white;">X</a></div>
+<div class="vissza">
+  <a href="{{route('login')}}" style="color:#006400;">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 -6 20 20">
+    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+  </svg>
+
+  Login</a>
+</div>
 <div class='box'>
   <form method="POST" action="{{ route('register') }}">
     @csrf
   <div class='box-form'>
     <div class='box-login-tab'></div>
     <div class='box-login-title'>
-      <div class='i i-login'></div><h2>Register</h2>
+      <div class='i i-login'></div><h2>REGISTER</h2>
     </div>
     <div class='box-login'>
       <div class='fieldset-body' id='login_form'>
@@ -455,13 +464,18 @@ Credits
           <input name="password_confirmation" type="password" class="form-control" id="password_confirmation">
         </p>
 
-       
+      
         	<input type='submit' id='do_login' value='Register' title='Register' />
          
       </div>
     </div>
   </div>
 </form>
+
+<div>
+<a>Already a user?</a>
+<a href="{{  route('login') }}"> Login</a>
 </div>
 
+</div>
 

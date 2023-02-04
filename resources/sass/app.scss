@@ -2,16 +2,16 @@
 
 html, body {
     height: 100%;
-    background: #cc5333;
+    background: #ffffff;
     color: white;
     padding-bottom: 100px;
   }
 .content {
     width: 100%;
     height: auto;
-   background: #23074d;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #cc5333, #23074d);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #cc5333, #23074d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   background: #ffffff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ffffff, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ffffff, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    
 }
 .navbar {
@@ -23,9 +23,9 @@ li.nav-item.dropdown{
 }
 a {
   text-decoration: none;
-  color: white;
+  color: rgb(41, 40, 40);
 }
 .card {
 
-  background-color: rgba(32,37,41, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }

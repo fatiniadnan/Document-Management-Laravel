@@ -39,17 +39,17 @@ class TextController extends Controller
      */
     public function store(Request $request)
     {
-        if (Storage::disk('local')->exists('./public/'.Auth::user()->id.'/'.$request->name.'.txt')) {
+        if (Storage::disk('public')->exists('./public/'.'/'.$request->name.'.txt')) {
             return back()
             ->with('error','Sorry, this file name exist! Please choose another one.');
             
         }
-        Storage::disk('local')->put('./public/'.Auth::user()->id.'/'.$request->name.'.txt', $request->text);
+        Storage::disk('public')->put('./public/'.'/'.$request->name.'.txt', $request->text);
 
         $fileModel = new File;
-        $size = Storage::size('./public/'.Auth::user()->id.'/'.$request->name.'.txt');
+        $size = Storage::size('./public/'.'/'.$request->name.'.txt');
         $fileModel->name = $request->name.'.txt';
-        $fileModel->file_path = 'storage/'.Auth::user()->id.'/'.$request->name.'.txt';
+        $fileModel->file_path = 'storage/'.'/'.$request->name.'.txt';
         $fileModel->size = $size;
         $fileModel->owner = Auth::user()->id;
         $fileModel->save();

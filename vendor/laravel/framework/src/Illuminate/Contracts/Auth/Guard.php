@@ -16,7 +16,7 @@ interface Guard
      *
      * @return bool
      */
-    public function guest();
+   // public function guest();
 
     /**
      * Get the currently authenticated user.
